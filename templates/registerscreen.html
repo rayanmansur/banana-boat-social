@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+
+
+{% block body %}
+
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+<br>
+<br>
+{% if username %}
+    <h1>Registration successful!</h1>
+    <h2>Login <a href="../login">here</a></h2>
+{% else %}
+    <h1>Register</h1>
+    <br>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }}&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form.username() }}
+        <br>
+        <br>
+        {{ form.password.label }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form.password() }}
+        <br>
+        <br>
+        {{ form.email.label }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form.email() }}
+        <br>
+        <br>
+        {{ form.register() }}
+
+    </form>
+    <br><br><br>
+
+
+{% endif %}
+
+{% endblock %}
